@@ -1,12 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Asks from './components/Asks';
+import NewAsk from './components/NewAsk';
 
 export default function App() {
+  const [asks, setAsks] = useState(
+    [
+    {
+      request: "Tylenol",
+      priority: "Soon"
+    },
+    {
+      request: "Hang out",
+      priority: "Whenever"
+    },
+    {
+      request: "Bathroom",
+      priority: "Right now"
+    }
+  ]);
+
+  useEffect(() => {
+    console.log(asks);
+
+  }, [asks]);
+  
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>JaxApp</Text>
+      <Asks asks={asks} />
+      <NewAsk asks={asks} setAsks={setAsks}/>
     </View>
   );
 }
