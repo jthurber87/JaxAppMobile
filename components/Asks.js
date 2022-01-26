@@ -1,15 +1,15 @@
-import { Text, TouchableOpacity, StyleSheet, Alert, View } from 'react-native';
+import { KeyboardAvoidingView, Text, TouchableOpacity, StyleSheet, Alert, View } from 'react-native';
 
-export default function Asks ({asks, setAsks}) {
+export default function Asks({ asks, setAsks }) {
 
     const createTwoButtonAlert = (ask, deleteAsk) =>
         Alert.alert(
             "Delete",
             `Are you sure you want to delete ${ask.request.toLowerCase()}?`,
             [
-                { 
-                    text: "Cancel", 
-                    onPress: () => console.log("Cancel Pressed") 
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed")
                 },
                 {
                     text: "Delete",
@@ -18,26 +18,28 @@ export default function Asks ({asks, setAsks}) {
                         deleteAsk(newArray)
                     }
                 }
-        ]
+            ]
         );
 
     const askList = asks.map((ask, index) => {
-        return(
-            <TouchableOpacity 
-            key={index}
-            style={styles.button} 
-            onPress={() => alert(`${ask.request} pressed!`)}
-            onLongPress={() => createTwoButtonAlert(ask, setAsks)}
+        return (
+            <TouchableOpacity
+                key={index}
+                style={styles.button}
+                onPress={() => alert(`${ask.request} pressed!`)}
+                onLongPress={() => createTwoButtonAlert(ask, setAsks)}
             >
                 <Text style={styles.text}>{ask.request}</Text>
             </TouchableOpacity>
         )
     })
-    
+
     return (
-        <View style={styles.askList}>
-            {askList}
-        </View>
+        <KeyboardAvoidingView style={styles.container} behavior='padding'>
+            <View style={styles.askList}>
+                {askList}
+            </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 150,
-        height: 50, 
+        height: 50,
         backgroundColor: "blue",
         display: "flex",
         justifyContent: 'center',

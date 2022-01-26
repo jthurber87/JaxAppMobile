@@ -1,4 +1,4 @@
-import { Text, TextInput, StyleSheet } from 'react-native';
+import { Text, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, {useEffect} from 'react'
 
 export default function NewAsk (props) {
@@ -11,7 +11,7 @@ export default function NewAsk (props) {
     
 
     return (
-        <>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <TextInput 
                 style={styles.input}
                 editable
@@ -24,7 +24,7 @@ export default function NewAsk (props) {
                     setText("")
                 }}
             />
-        </> 
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderRadius: 5,
         color: "blue",
-        margin: 5
+        marginTop: 20
     }
 })
