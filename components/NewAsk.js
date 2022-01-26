@@ -1,4 +1,4 @@
-import { Text, TextInput } from 'react-native';
+import { Text, TextInput, StyleSheet } from 'react-native';
 import React, {useEffect} from 'react'
 
 export default function NewAsk (props) {
@@ -13,6 +13,7 @@ export default function NewAsk (props) {
     return (
         <>
             <TextInput 
+                style={styles.input}
                 editable
                 maxLength={30}
                 placeholder="Add an ask..."
@@ -26,3 +27,15 @@ export default function NewAsk (props) {
         </> 
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+        borderWidth: 1,
+        width: 150,
+        height:  50,
+        textAlign: 'center',
+        borderRadius: 5,
+        color: "blue",
+        margin: 5
+    }
+})

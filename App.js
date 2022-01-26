@@ -30,7 +30,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>JaxApp</Text>
-      <Asks asks={asks} />
+      <Asks asks={asks} setAsks={setAsks}/>
       <NewAsk asks={asks} setAsks={setAsks}/>
     </View>
   );
