@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Asks from './components/Asks';
 import NewAsk from './components/NewAsk';
 
@@ -29,7 +29,8 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      <Text>JaxApp</Text>
+      <SafeAreaView />
+      <Text style={styles.title}>JaxApp</Text>
       <Asks asks={asks} setAsks={setAsks}/>
       <NewAsk asks={asks} setAsks={setAsks}/>
     </View>
@@ -38,9 +39,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontFamily: "AvenirNext-UltraLightItalic",
+    fontSize: 50,
+    margin: 30
+  }
 });

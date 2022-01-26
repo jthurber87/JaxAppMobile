@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, Alert, View } from 'react-native';
 
 export default function Asks ({asks, setAsks}) {
 
@@ -24,24 +24,20 @@ export default function Asks ({asks, setAsks}) {
     const askList = asks.map((ask, index) => {
         return(
             <TouchableOpacity 
-                key={index}
-                style={styles.button} 
-                onPress={() => alert(`${ask.request} pressed!`)}
-                onLongPress={() => createTwoButtonAlert(ask, setAsks)
-                    
-                    
-                }
-                >
+            key={index}
+            style={styles.button} 
+            onPress={() => alert(`${ask.request} pressed!`)}
+            onLongPress={() => createTwoButtonAlert(ask, setAsks)}
+            >
                 <Text style={styles.text}>{ask.request}</Text>
             </TouchableOpacity>
         )
     })
     
     return (
-        <>
-            <Text>Asks:</Text>
+        <View style={styles.askList}>
             {askList}
-        </>
+        </View>
     )
 }
 
@@ -49,7 +45,8 @@ const styles = StyleSheet.create({
     text: {
         margin: 5,
         fontSize: 20,
-        color: "white"
+        color: "white",
+        fontFamily: "AvenirNext-Regular"
     },
     button: {
         width: 150,
@@ -58,7 +55,14 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        margin: 15,
         borderRadius: 5
+    },
+    askList: {
+        width: "100%",
+        display: "flex",
+        justifyContent: 'center',
+        flexWrap: "wrap",
+        flexDirection: 'row'
     }
 })
